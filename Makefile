@@ -4,6 +4,9 @@
 #
 ###############################################
 
+# Define PIP_COMPILE_OPTS=-v to get more information during make upgrade.
+PIP_COMPILE = pip-compile --rebuild --upgrade $(PIP_COMPILE_OPTS)
+
 .DEFAULT_GOAL := help
 
 help: ## display this help message
@@ -17,12 +20,17 @@ clean: ## delete most git-ignored files
 	find . -name '*~' -exec rm -f {} +
 
 requirements: ## install environment requirements
-	pip install -r requirements.txt
+	pip install -r requirements/base.txt
 
+upgrade: export CUSTOM_COMPILE_COMMAND=make upgrade
 upgrade: ## update the requirements/*.txt files with the latest packages satisfying requirements/*.in
-	pip install -q pip-tools
-	pip-compile -U --output-file requirements/base.txt requirements/base.in
+	pip install -qr requirements/pip-tools.txt
+	# Make sure to compile files after any other files they include!
+	$(PIP_COMPILE) -o requirements/pip-tools.txt requirements/pip-tools.in
+	$(PIP_COMPILE) -o requirements/base.txt requirements/base.in
+	$(PIP_COMPILE) -o requirements/quality.txt requirements/quality.in
 
 quality: clean ## check coding style with pycodestyle and pylint
+	pip install -r requirements/quality.txt
 	pycodestyle ./secure_cloudfront_video
 	pylint ./secure_cloudfront_video --rcfile=./setup.cfg
