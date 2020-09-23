@@ -23,7 +23,7 @@ def cloudfront_rsa_signer(message):
     Returns:
         String that contains the signed private key.
     """
-    cloudfront_key = str(getattr(settings, 'SCV_CLOUDFRONT_PRIVATE_SIGNING_KEY', ''))
+    cloudfront_key = str.encode(getattr(settings, 'SCV_CLOUDFRONT_PRIVATE_SIGNING_KEY', ''))
 
     if not cloudfront_key:
         raise MissingCloudFrontInformationError('Missing CloudFront private signing key.')

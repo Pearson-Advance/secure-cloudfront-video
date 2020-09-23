@@ -51,7 +51,7 @@ def secure_cloudfront_video(request):
             date_less_than=utc_time_plus_one_minute(),
         )
     except MissingCloudFrontInformationError as cloudfront_error:
-        log.error(cloudfront_error.message)
+        log.error(str(cloudfront_error))
         raise Http404
 
     return redirect(redirect_url)
