@@ -5,4 +5,4 @@ Init module for secure_cloudfront_video.
 from __future__ import unicode_literals
 
 
-__version__ = '1.0.0'
+__version__ = '1.1.0'
