@@ -37,11 +37,11 @@ def cloudfront_rsa_signer(message):
     return private_key.sign(message, padding.PKCS1v15(), hashes.SHA1())
 
 
-def utc_time_plus_one_minute():
+def utc_time_plus_one_day():
     """
-    Return the UTC now time plus one minute.
+    Return the UTC now time plus one day.
 
     Returns:
-        datetime.datetime instance that contains the UTC time plus one minute.
+        datetime.datetime instance that contains the UTC time plus one day.
     """
-    return datetime.utcnow() + timedelta(minutes=1)
+    return datetime.utcnow() + timedelta(days=1)
