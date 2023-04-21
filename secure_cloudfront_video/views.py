@@ -10,7 +10,7 @@ from django.http import Http404
 from django.shortcuts import redirect
 
 from secure_cloudfront_video.exceptions import MissingCloudFrontInformationError
-from secure_cloudfront_video.utils import cloudfront_rsa_signer, utc_time_plus_one_minute
+from secure_cloudfront_video.utils import cloudfront_rsa_signer, utc_time_plus_one_day
 
 log = logging.getLogger(__name__)
 
@@ -48,7 +48,7 @@ def secure_cloudfront_video(request):
         cloudfront_signer = CloudFrontSigner(cloudfront_id, cloudfront_rsa_signer)
         redirect_url = cloudfront_signer.generate_presigned_url(
             url='{}{}'.format(cloudfront_url, key),
-            date_less_than=utc_time_plus_one_minute(),
+            date_less_than=utc_time_plus_one_day(),
         )
     except MissingCloudFrontInformationError as cloudfront_error:
         log.error(str(cloudfront_error))
