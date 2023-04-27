@@ -9,10 +9,28 @@
 # linking to it here is good.
 
 # Stay on the latest LTS release of Django
-Django<2.3
+Django<4.0
 
-# edx-platform version compatibility.
-cryptography==2.4.2
+# edx-platform version compatibility - base.txt
+asgiref==3.5.2
 botocore==1.8.17
-pylint==2.4.2
-pycodestyle==2.6.0
+cryptography==36.0.2
+jmespath==0.10.
+pytz==2022.2.1
+sqlparse==0.4.3
+
+# Keep same edx platform version - quality.txt
+urllib3==1.26.12
+astroid==2.11.7
+dill==0.3.5.1
+isort==5.10.1
+lazy-object-proxy==1.7.1
+platformdirs==2.5.2
+pylint==2.13.9
+typing-extensions==4.4.0
+wrapt==1.14.1
+
+# Keep same edx platform version - pip-tools.txt
+click==8.1.3
+pip-tools==6.9.0
+six==1.16.0
