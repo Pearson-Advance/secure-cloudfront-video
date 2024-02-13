@@ -63,6 +63,7 @@ setup(
     name='secure-cloudfront-video',
     version=VERSION,
     description='Open edX plugin to generate signed video URLs from Amazon Cloudfront.',
+    license='Apache-2.0',
     author='eduNEXT',
     author_email='contact@edunext.co',
     packages=[
