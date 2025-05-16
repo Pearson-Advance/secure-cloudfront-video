@@ -42,3 +42,4 @@ def plugin_settings(settings):
     settings.SCV_CLOUDFRONT_ID = ''
     settings.SCV_CLOUDFRONT_URL = ''
     settings.SCV_CLOUDFRONT_PRIVATE_SIGNING_KEY = ''
+    settings.SCV_CORE_LIB_BACKEND = 'secure_cloudfront_video.edxapp_wrapper.backends.core_lib_o_v1'  # pylint: disable=line-too-long
