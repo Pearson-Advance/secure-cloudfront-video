@@ -38,12 +38,6 @@ def secure_cloudfront_video(request):
         log.info('Request is not authenticated or from mobile app.')
         raise Http404
 
-    meta = request.META
-
-    if not meta or meta.get('HTTP_HOST', '') not in meta.get('HTTP_REFERER', ''):
-        log.info('Request does not match HOST and/or REFERER.')
-        raise Http404
-
     key = request.GET.get('key', '')
     cloudfront_url = getattr(settings, 'SCV_CLOUDFRONT_URL', '')
     cloudfront_id = getattr(settings, 'SCV_CLOUDFRONT_ID', '')
