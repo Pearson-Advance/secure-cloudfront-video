@@ -13,3 +13,11 @@ More info: https://github.com/Pearson-Advance/secure-cloudfront-video/pull/5
 Add mobile support for the secure cloudfront video view.
 
 More info: https://github.com/Pearson-Advance/secure-cloudfront-video/pull/7
+
+## Version 2.1.1
+
+### Description:
+
+Removes HTTP_REFERER check for all requests.
+
+Mor info: https://github.com/Pearson-Advance/secure-cloudfront-video/pull/8
