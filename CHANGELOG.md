@@ -21,3 +21,11 @@ More info: https://github.com/Pearson-Advance/secure-cloudfront-video/pull/7
 Removes HTTP_REFERER check for all requests.
 
 Mor info: https://github.com/Pearson-Advance/secure-cloudfront-video/pull/8
+
+## Version 3.0.0
+
+### Description:
+
+Add support to Ulmo release
+
+Mor info: https://github.com/Pearson-Advance/secure-cloudfront-video/pull/9
