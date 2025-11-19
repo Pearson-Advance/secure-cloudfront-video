@@ -42,7 +42,7 @@ jobs:
         run: bump-my-version bump $SEMVER_TYPE
 
       - name: Collect changelog entries.
-        run: make changelog
+        run: make changelog-collect
 
       - name: Create pull request.
         env:

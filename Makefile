@@ -42,5 +42,5 @@ requirements-dev: ## install development environment requirements.
 changelog-entry: requirements-dev ## Create a new changelog entry.
 	scriv create --edit
 
-changelog: requirements-dev ## Collect changelog entries in the CHANGELOG.md file.
+changelog-collect: requirements-dev ## Collect changelog entries in the CHANGELOG.md file.
 	scriv collect
