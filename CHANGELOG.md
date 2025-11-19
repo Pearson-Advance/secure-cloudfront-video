@@ -1,4 +1,19 @@
 
+<a id='changelog-3.1.0'></a>
+# 3.1.0 — 2025-11-19
+
+## Removed
+
+- Bumpversion has been removed from configuration files.
+
+## Added
+
+- Scriv support has been added to manage CHANGELOG files.
+- changelog-entry and changelog commands have added to Makefile.
+- Bump-my-version has been added to improve the release process of the plugin.
+- A new Github Action workflow has been added to create a PR for the release process.
+- Pyproject.toml file has been added.
+
 
 scriv-end-here
 ## Version 2.0.0
