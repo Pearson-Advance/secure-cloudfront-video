@@ -65,17 +65,7 @@ jobs:
           --body "
             ## Description
 
-            This PR bumps the version from \`$CURRENT_VERSION\` to \`$NEW_VERSION\`."
+            This PR bumps the version from \`$CURRENT_VERSION\` to \`$NEW_VERSION\`.
 
-      # - name: Create pull request.
-      #   uses: peter-evans/create-pull-request@v7
-      #   with:
-      #     commit-message: "chore: bump version ${{ steps.version.outputs.CURRENT_VERSION }} → ${{ steps.version.outputs.NEW_VERSION }}"
-      #     title: "${{ steps.version.outputs.NEW_VERSION }} release."
-      #     body: |
-      #       ## Description
-
-      #       This PR bumps the version from `${{ steps.version.outputs.CURRENT_VERSION }}` to `${{ steps.version.outputs.NEW_VERSION }}`.
-
-      #       The changelog has been automatically generated using `scriv`.
-      #     branch: "release-${{ steps.version.outputs.NEW_VERSION }}"
+            The changelog has been automatically generated using \`scriv\`.
+            "
