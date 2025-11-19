@@ -43,4 +43,4 @@ changelog-entry: requirements-dev ## Create a new changelog entry.
 	scriv create --edit
 
 changelog: requirements-dev ## Collect changelog entries in the CHANGELOG.md file.
-	scriv collect --keep
+	scriv collect

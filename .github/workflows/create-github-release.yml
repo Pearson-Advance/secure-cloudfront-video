@@ -1,9 +1,7 @@
-name: Create Github release.
+name: Create GitHub release.
 
 on:
-  push:
-    branches:
-      - dqe/add-automatic-release
+  workflow_dispatch:
 
 jobs:
   create-github-release:
