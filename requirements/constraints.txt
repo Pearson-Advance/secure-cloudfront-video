@@ -10,3 +10,7 @@
 
 # Stay on the latest LTS release of Django
 Django<6.0
+
+# Development constraints.
+bump-my-version==1.2.4
+scriv==1.7.0
