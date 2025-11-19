@@ -1,0 +1,41 @@
+name: Create Github release.
+
+on:
+  push:
+    branches:
+      - dqe/add-automatic-release
+
+jobs:
+  create-github-release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: 3.13
+
+      - name: Install dev requirements.
+        run: make requirements-dev
+
+      - name: Configure Git user
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Read current version.
+        id: version
+        run: |
+          echo "CURRENT_VERSION=$(bump-my-version show current_version)" >> $GITHUB_OUTPUT
+
+      - name: Create and push Git tag.
+        env:
+          CURRENT_VERSION: ${{ steps.version.outputs.CURRENT_VERSION }}
+        run: |
+          git tag -am "Release $CURRENT_VERSION" "$CURRENT_VERSION"
+          git push origin "$CURRENT_VERSION"
+
+      - name: Create GitHub release.
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: scriv github-release --repo=Pearson-Advance/secure-cloudfront-video
