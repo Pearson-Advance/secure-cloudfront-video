@@ -1,14 +1,4 @@
 
-<a id='changelog-3.0.0'></a>
-# 3.0.0 — 2025-11-13
-
-## Removed
-
-- A bullet item for the Removed category.
-
-## Added
-
-- A bullet item for the Added category.
 
 scriv-end-here
 ## Version 2.0.0
