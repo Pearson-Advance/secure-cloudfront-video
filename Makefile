@@ -29,8 +29,18 @@ upgrade: ## update the requirements/*.txt files with the latest packages satisfy
 	$(PIP_COMPILE) -o requirements/pip-tools.txt requirements/pip-tools.in
 	$(PIP_COMPILE) -o requirements/base.txt requirements/base.in
 	$(PIP_COMPILE) -o requirements/quality.txt requirements/quality.in
+	$(PIP_COMPILE) -o requirements/dev.txt requirements/dev.in
 
 quality: clean ## check coding style with pycodestyle and pylint
 	pip install -r requirements/quality.txt
 	pycodestyle ./secure_cloudfront_video
 	pylint ./secure_cloudfront_video --rcfile=./setup.cfg
+
+requirements-dev: ## install development environment requirements.
+	pip install -r requirements/dev.txt
+
+changelog-entry: requirements-dev ## Create a new changelog entry.
+	scriv create --edit
+
+changelog: requirements-dev ## Collect changelog entries in the CHANGELOG.md file.
+	scriv collect

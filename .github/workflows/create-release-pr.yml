@@ -1,0 +1,58 @@
+name: Create a release pull request.
+
+on:
+  workflow_dispatch:
+    inputs:
+      semver-type:
+        description: "Semantic version to be released."
+        required: true
+        type: choice
+        options:
+          - "major"
+          - "minor"
+          - "patch"
+
+jobs:
+  create-release-pr:
+    runs-on: ubuntu-latest
+    env:
+      SEMVER_TYPE: ${{ github.event.inputs.semver-type }}
+
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: 3.13
+
+      - name: Install dev requirements.
+        run: make requirements-dev
+
+      - name: Configure Git user
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Calculate current and next version.
+        id: version
+        run: |
+          echo "CURRENT_VERSION=$(bump-my-version show current_version)" >> $GITHUB_OUTPUT
+          echo "NEW_VERSION=$(bump-my-version show --increment $SEMVER_TYPE new_version)" >> $GITHUB_OUTPUT
+
+      - name: Run bump version.
+        run: bump-my-version bump $SEMVER_TYPE
+
+      - name: Collect changelog entries.
+        run: make changelog
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v7
+        with:
+          commit-message: "chore: bump version ${{ steps.version.outputs.CURRENT_VERSION }} → ${{ steps.version.outputs.NEW_VERSION }}"
+          title: "${{ steps.version.outputs.NEW_VERSION }} release."
+          body: |
+            ## Description
+
+            This PR bumps the version from `${{ steps.version.outputs.CURRENT_VERSION }}` to `${{ steps.version.outputs.NEW_VERSION }}`.
+
+            The changelog has been automatically generated using `scriv`.
+          branch: "release-${{ steps.version.outputs.NEW_VERSION }}"
