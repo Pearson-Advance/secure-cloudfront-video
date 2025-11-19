@@ -60,12 +60,12 @@ jobs:
           git commit -am "chore: bump version $CURRENT_VERSION → $NEW_VERSION"
           git push origin release-$NEW_VERSION
 
-          gh pr create --base master --head release-$NEW_VERSION \
+          gh pr create --base master \
           --title "$NEW_VERSION release" \
           --body "
             ## Description
 
-            This PR bumps the version from `$CURRENT_VERSION` to `$NEW_VERSION`."
+            This PR bumps the version from \`$CURRENT_VERSION\` to \`$NEW_VERSION\`."
 
       # - name: Create pull request.
       #   uses: peter-evans/create-pull-request@v7
