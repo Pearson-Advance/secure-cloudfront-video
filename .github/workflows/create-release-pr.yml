@@ -50,7 +50,7 @@ jobs:
       - name: Collect changelog entries.
         run: make changelog
 
-      - Create pull request.
+      - name: Create pull request.
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           CURRENT_VERSION: ${{ steps.version.outputs.CURRENT_VERSION }}
