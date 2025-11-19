@@ -1,5 +1,20 @@
 
+<a id='changelog-3.0.0'></a>
+# 3.0.0 — 2025-11-19
 
+## Removed
+
+- Bumpversion has been removed from configuration files.
+
+## Added
+
+- Scriv support has been added to manage CHANGELOG files.
+- changelog-entry and changelog commands have been added to Makefile.
+- Bump-my-version has been added to improve the release process of the plugin.
+- A new Github Action workflow has been added to create a PR for the release process.
+- Pyproject.toml file has been added.
+
+<!-- Scriv starts here: https://scriv.readthedocs.io/en/latest/configuration.html#config-start-marker -->
 scriv-end-here
 ## Version 2.0.0
 

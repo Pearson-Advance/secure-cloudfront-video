@@ -15,7 +15,7 @@ name: Create a release pull request.
 on:
   push:
     branches:
-      - dqe/add-automatic-release
+      - dqe/add-automatic-release-2
 
 jobs:
   create-release-pr:
