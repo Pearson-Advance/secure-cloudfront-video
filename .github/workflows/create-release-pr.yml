@@ -21,7 +21,8 @@ jobs:
   create-release-pr:
     runs-on: ubuntu-latest
     env:
-      SEMVER_TYPE: ${{ github.event.inputs.semver-type }}
+    #   SEMVER_TYPE: ${{ github.event.inputs.semver-type }}
+        SEMVER_TYPE: minor
 
     steps:
       - uses: actions/checkout@v5
