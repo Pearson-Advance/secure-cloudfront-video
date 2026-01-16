@@ -20,6 +20,8 @@ jobs:
           python-version: 3.13
 
       - name: Check Scriv entries have been added.
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
         run: |
           gh pr view --json files --jq '.files[].path' \
           | grep -q "^changelog\.d/" || echo "No changelog.d files added or changed." && exit 1
