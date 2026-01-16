@@ -1,0 +1,7 @@
+[tool.bumpversion]
+current_version = "3.0.0"
+tag = false
+commit = false
+
+[[tool.bumpversion.files]]
+filename = "secure_cloudfront_video/__init__.py"
