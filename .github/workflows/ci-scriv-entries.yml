@@ -1,6 +1,7 @@
 # This workflow verifies that the changelod.d entries have been added
 # for the changes in the pull request.
-# Scric collect command will fail if no new entries are found.
+# Scriv collect command will fail if no new entries are found.
+
 name: CI Scriv entries.
 
 on:

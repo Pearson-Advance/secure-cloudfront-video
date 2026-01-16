@@ -1,3 +1,7 @@
+# This workflow creates a pull request to bump the version and update the changelog
+# according to the semantic versioning type provided as input.
+# Once the PR is merged a new GH release should be created using the create-github-release workflow.
+
 name: Create a release pull request.
 
 on:
