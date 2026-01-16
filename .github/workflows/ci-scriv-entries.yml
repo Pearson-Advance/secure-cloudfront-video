@@ -1,0 +1,20 @@
+# This workflow verifies that the changelod.d entries have been added
+# for the changes in the pull request.
+# Scric collect command will fail if no new entries are found.
+name: CI Scriv entries.
+
+on:
+  pull_request:
+
+jobs:
+  ci-scriv-entries:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: 3.13
+
+      - name: Check Scriv entries have been added.
+        run: make changelog-collect
