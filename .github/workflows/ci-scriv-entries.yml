@@ -6,6 +6,9 @@ name: CI Scriv entries.
 
 on:
   pull_request:
+  push:
+    branches:
+      - dqe/check-scriv-entries
 
 jobs:
   ci-scriv-entries:
