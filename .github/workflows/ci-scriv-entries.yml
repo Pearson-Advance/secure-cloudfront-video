@@ -25,5 +25,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ github.token }}
         run: |
+          git status
           gh pr view --json files --jq '.files[].path' \
           | grep -q "^changelog\.d/" || echo "No changelog.d files added or changed." && exit 1
