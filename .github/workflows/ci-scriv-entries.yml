@@ -24,4 +24,4 @@ jobs:
           GITHUB_TOKEN: ${{ github.token }}
         run: |
           gh pr view --json files --jq '.files[].path' \
-          | grep -q "^changelog\.d/.*\.md$" || echo "No changelog.d entries added or changed." && exit 1
+          | grep -q "^changelog\.d/.*\.md$" || $(echo "No changelog.d entries added or changed." && exit 1)
