@@ -12,8 +12,9 @@ jobs:
 
     steps:
       - uses: actions/checkout@v6
-        with:
-          ref: ${{ github.head_ref }}
+        # with:
+        #   ref: ${{ github.head_ref }}
+
       - uses: actions/setup-python@v6
         with:
           python-version: 3.13
@@ -23,4 +24,4 @@ jobs:
           GITHUB_TOKEN: ${{ github.token }}
         run: |
           gh pr view --json files --jq '.files[].path' \
-          | grep -q "^changelog\.d/" || echo "No changelog.d files added or changed." && exit 1
+          | grep -q "^changelog\.d/" || echo "No changelog.d entries added or changed." && exit 1
