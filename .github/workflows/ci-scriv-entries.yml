@@ -1,0 +1,27 @@
+# This workflow verifies that the changelod.d entries have been added
+# for the changes in the pull request, using the GH CLI to check the changed files in the PR.
+
+name: CI Scriv entries.
+
+on:
+  pull_request:
+
+jobs:
+  ci-scriv-entries:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: ${{ github.head_ref }}
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: 3.13
+
+      - name: Check Scriv entries have been added.
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          gh pr view --json files --jq '.files[].path' \
+          | grep -q "^changelog\.d/.*\.md$" || (echo "No changelog.d entries added or changed." && exit 1)

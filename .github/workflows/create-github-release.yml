@@ -1,3 +1,6 @@
+# This workflow creates a GitHub release based on the current version
+# changed in the PR created by the create-release-pr workflow.
+
 name: Create GitHub release.
 
 on:
