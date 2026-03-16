@@ -4,19 +4,19 @@
 #
 #    make upgrade
 #
-astroid==4.0.1
+astroid==4.0.4
     # via pylint
-dill==0.4.0
+dill==0.4.1
     # via pylint
-isort==7.0.0
+isort==8.0.1
     # via pylint
 mccabe==0.7.0
     # via pylint
-platformdirs==4.5.0
+platformdirs==4.9.4
     # via pylint
 pycodestyle==2.14.0
     # via -r requirements/quality.in
-pylint==4.0.2
+pylint==4.0.5
     # via -r requirements/quality.in
-tomlkit==0.13.3
+tomlkit==0.14.0
     # via pylint
